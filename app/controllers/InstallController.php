@@ -15,10 +15,10 @@ class InstallController extends BaseController {
 			$table->string('username', 32)->unique();;
 			$table->string('password', 60);
 			$table->string('email')->unique();
-			$table->enum('level', array('user', 'admin'));
+			$table->enum('level', array('user', 'admin'))->default('user');
 			$table->timestamps();
 		});
-		
+
 		$user = new User;
 		$user->username = 'admin';
 		$user->password = Hash::make('admin');
@@ -29,7 +29,7 @@ class InstallController extends BaseController {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->string('title', 100);
-			$table->string('slug', 100)->unique();;
+			$table->string('slug', 100)->unique();
 			$table->string('read_more');
 			$table->text('content');
 			$table->timestamps();
