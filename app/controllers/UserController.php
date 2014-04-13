@@ -57,8 +57,8 @@ class UserController extends BaseController {
 			'password_confirmation' => Input::get('password_confirmation')
 		];
 		$rules = [
-			'username' => 'required|alpha_num|between:3,32',
-			'email' => 'required|email',
+			'username' => 'required|alpha_num|between:3,32|unique:users',
+			'email' => 'required|email|unique:users',
 			'password' => 'required|min:6|confirmed'
 		];
 
