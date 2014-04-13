@@ -6,8 +6,11 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', 'HomeController@getIndex');
+Route::get('/', 'PostController@getList');
 Route::get('install/', 'InstallController@getInstall');
+
+/* Posts module */
+Route::get('post/{slug}', 'PostController@getShow');
 
 /* User module */
 Route::group(array('prefix' => 'user'), function() {
