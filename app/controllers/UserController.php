@@ -5,7 +5,7 @@ class UserController extends BaseController {
 	{
 		if (Auth::check())
 		{
-			Redirect::to('/');
+			return Redirect::to('/');
 		}
 
 		return View::make('user.login')->with('head_title', 'Login');
@@ -42,7 +42,7 @@ class UserController extends BaseController {
 	{
 		if (Auth::check())
 		{
-			Redirect::to('/');
+			return Redirect::to('/');
 		}
 
 		return View::make('user.register')->with('head_title', 'Register');
