@@ -2,7 +2,7 @@
 
 @section('content')
 	<article>
-		<h2><a href="post/{{ $post->slug }}/">{{{ $post->title }}}</a></h2>
+		<h2>{{{ $post->title }}}</h2>
 		{{ $post->content }}
 
 		<p>Written by: {{ $post->user->username }}</p>

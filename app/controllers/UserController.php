@@ -8,7 +8,7 @@ class UserController extends BaseController {
 			Redirect::to('/');
 		}
 
-		return View::make('user.login');
+		return View::make('user.login')->with('head_title', 'Login');
 	}
 
 	public function postLogin()
@@ -45,7 +45,7 @@ class UserController extends BaseController {
 			Redirect::to('/');
 		}
 
-		return View::make('user.register');
+		return View::make('user.register')->with('head_title', 'Register');
 	}
 
 	public function postRegister()

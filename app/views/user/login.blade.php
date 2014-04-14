@@ -1,27 +1,31 @@
 @extends('layout')
 
 @section('content')
-	{{ Form::open(array('action' => 'UserController@postLogin')) }}
+	<article>
+		<h2>Login</h2>
 
-	{{ Form::label('username', 'Username') }}
-	{{ Form::text('username', Input::old('username')) }}
+		{{ Form::open(array('action' => 'UserController@postLogin')) }}
 
-	{{ Form::label('password', 'Password') }}
-	{{ Form::password('password') }}
+		{{ Form::label('username', 'Username') }}
+		{{ Form::text('username', Input::old('username')) }}
 
-	{{ Form::submit('Login') }}
+		{{ Form::label('password', 'Password') }}
+		{{ Form::password('password') }}
 
-	{{ Form::close() }}
+		{{ Form::submit('Login') }}
 
-	@if($errors->has())
-		<ul>
-		@foreach ($errors->all() as $message)
-			<li>{{$message}}</li>
-		@endforeach
-		</ul>
-	@endif
+		{{ Form::close() }}
 
-	@if(Session::has('message'))
-		<p>{{Session::get('message')}}</p>
-	@endif
+		@if($errors->has())
+			<ul>
+			@foreach ($errors->all() as $message)
+				<li>{{$message}}</li>
+			@endforeach
+			</ul>
+		@endif
+
+		@if(Session::has('message'))
+			<p>{{Session::get('message')}}</p>
+		@endif
+	</article>
 @stop

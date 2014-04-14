@@ -1,35 +1,37 @@
 @extends('layout')
 
 @section('content')
-	<h2>Register new account</h2>
+	<article>
+		<h2>Register new account</h2>
 
-	{{ Form::open(array('action' => 'UserController@postRegister')) }}
+		{{ Form::open(array('action' => 'UserController@postRegister')) }}
 
-	{{ Form::label('username', 'Username') }}
-	{{ Form::text('username', Input::old('username')) }}
+		{{ Form::label('username', 'Username') }}
+		{{ Form::text('username', Input::old('username')) }}
 
-	{{ Form::label('email', 'Email address') }}
-	{{ Form::email('email', Input::old('email')) }}
+		{{ Form::label('email', 'Email address') }}
+		{{ Form::email('email', Input::old('email')) }}
 
-	{{ Form::label('password', 'Password') }}
-	{{ Form::password('password') }}
+		{{ Form::label('password', 'Password') }}
+		{{ Form::password('password') }}
 
-	{{ Form::label('password_confirmation', 'Confirm password') }}
-	{{ Form::password('password_confirmation') }}
+		{{ Form::label('password_confirmation', 'Confirm password') }}
+		{{ Form::password('password_confirmation') }}
 
-	{{ Form::submit('Login') }}
+		{{ Form::submit('Register') }}
 
-	{{ Form::close() }}
+		{{ Form::close() }}
 
-	@if($errors->has())
-		<ul>
-		@foreach ($errors->all() as $message)
-			<li>{{$message}}</li>
-		@endforeach
-		</ul>
-	@endif
+		@if($errors->has())
+			<ul>
+			@foreach ($errors->all() as $message)
+				<li>{{$message}}</li>
+			@endforeach
+			</ul>
+		@endif
 
-	@if(Session::has('message'))
-		<p>{{Session::get('message')}}</p>
-	@endif
+		@if(Session::has('message'))
+			<p>{{Session::get('message')}}</p>
+		@endif
+	</article>
 @stop
