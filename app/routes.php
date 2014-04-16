@@ -9,6 +9,11 @@
 Route::get('/', 'PostController@getList');
 Route::get('install/', 'InstallController@getInstall');
 
+/* Admin panel */
+Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function() {
+	Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getIndex'));
+});
+
 /* Posts module */
 Route::get('post/{slug}', 'PostController@getShow');
 

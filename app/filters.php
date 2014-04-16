@@ -38,6 +38,12 @@ Route::filter('auth', function()
 	if (Auth::guest()) return Redirect::route('user.login');
 });
 
+Route::filter('auth.admin', function()
+{
+	if (Auth::guest()) return Redirect::route('user.login');
+	if (Auth::user()->level != 'admin') return App::abort(403);
+});
+
 
 Route::filter('auth.basic', function()
 {
