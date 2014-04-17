@@ -21,7 +21,7 @@
 
 	@if(!$posts->count())
 		<tr>
-			<td colspan="5" class="table-empty">No posts yet, add something!</td>
+			<td colspan="5" class="table-empty">No posts yet, let's write something great!</td>
 		</tr>
 	@else
 		@foreach($posts as $post)
