@@ -6,6 +6,6 @@ use View;
 class DashboardController extends BaseController {
 	public function getIndex()
 	{
-		return View::make('admin.dashboard');
+		return View::make('admin.dashboard')->with('head_title', 'Dashboard');
 	}
 }

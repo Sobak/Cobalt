@@ -24,7 +24,7 @@ class PostController extends BaseController {
 
 	public function getCreate()
 	{
-		return View::make('post.create')->with('head_title', 'Create new post');
+		return View::make('post.create')->with('head_title', 'Create post');
 	}
 
 	public function postCreate()

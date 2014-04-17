@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0">
-	<title>{{ $head_title or 'No title' }}</title>
+	<title>Cobalt CMS &bull; {{ $head_title or 'No title' }}</title>
 	<link href="{{ URL::asset('theme/admin/css/style.css') }}" rel="stylesheet">
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
