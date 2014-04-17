@@ -587,15 +587,23 @@ td small {
 
 .cmf-skinned-text, select {
 	background: url(../img/select_bg.png) no-repeat center right;
-	background-size: 6px 12px;
+	background-size: 10px 12px;
 	color: #444;
 	cursor: pointer;
 	display: inline-block;
 	font-family: "Aller";
 	line-height: 30px;
-	padding: 0 8px;
+	padding: 6px 8px;
 	font-size: 12px;
 	font-size: 1.2rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: '';
+}
+
+select::-ms-expand {
+	display: none;
 }
 
 select {

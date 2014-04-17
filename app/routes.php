@@ -13,7 +13,10 @@ Route::get('install/', 'InstallController@getInstall');
 Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function() {
 	Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getIndex'));
 
-	Route::get('posts/', 'PostController@getManage');
+	Route::get('settings', 'Admin\SettingsController@getIndex');
+	Route::post('settings', 'Admin\SettingsController@postIndex');
+
+	Route::get('posts', 'PostController@getManage');
 	Route::get('post/new', 'PostController@getCreate');
 	Route::post('post/new', 'PostController@postCreate');
 	Route::get('post/edit/{id}', 'PostController@getEdit');

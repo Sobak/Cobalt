@@ -9,10 +9,30 @@ class InstallController extends BaseController {
 
 	protected function createDatabase()
 	{
+		Schema::create('settings', function($table)
+		{
+			$table->increments('id');
+			$table->string('name', 32)->unique();
+			$table->text('value');
+			$table->enum('type', array('boolean', 'input', 'text'));
+			$table->string('description');
+		});
+
+		$defaultSettings = [
+			[
+				'name' => 'site_title',
+				'value' => 'Site title',
+				'type' => 'input',
+				'description' => 'Site title'
+			]
+		];
+
+		DB::table('settings')->insert($defaultSettings);
+
 		Schema::create('users', function($table)
 		{
 			$table->increments('id');
-			$table->string('username', 32)->unique();;
+			$table->string('username', 32)->unique();
 			$table->string('password', 60);
 			$table->string('email')->unique();
 			$table->enum('level', array('user', 'admin'))->default('user');

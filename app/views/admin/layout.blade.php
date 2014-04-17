@@ -15,9 +15,9 @@
 			<h1 id="logo"><a class="fastbutton" href="/">Cobalt</a></h1>
 			<nav id="primary">
 				<ul>
-					<li><a data-icon="b" href="{{ URL::to('admin/post/new') }}">Write a post</a></li>
+					<li><a data-icon="b" href="{{ URL::action('PostController@getCreate') }}">Write a post</a></li>
 					<li><a data-icon="U" href="">Users</a></li>
-					<li><a data-icon="y" href="">Settings</a></li>
+					<li><a data-icon="y" href="{{ URL::action('Admin\SettingsController@getIndex') }}">Settings</a></li>
 				</ul>
 			</nav>
 			<div class="pull-right">
