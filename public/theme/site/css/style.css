@@ -123,6 +123,13 @@ main {
 	text-decoration: none;
 }
 
+#nav ul {
+	list-style: none;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
 #footer .copyright {
 	text-align: center;
 	color: #868686;
@@ -209,12 +216,6 @@ input, select, textarea {
 		right: 30px;
 		font-family: 'Open Sans Condensed', sans-serif;
 		text-align: right;
-	}
-
-	#nav ul {
-		list-style: none;
-		overflow: hidden;
-		margin: 0;
 	}
 
 	#nav ul li {
