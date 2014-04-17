@@ -3,7 +3,7 @@
 class PostController extends BaseController {
 	public function getList()
 	{
-		$posts = Post::all();
+		$posts = Post::orderBy('created_at', 'desc')->get();
 
 		if (!$posts->count())
 		{
@@ -22,7 +22,7 @@ class PostController extends BaseController {
 
 	public function getManage()
 	{
-		$posts = Post::all();
+		$posts = Post::orderBy('created_at', 'desc')->get();
 
 		return View::make('post.manage')->with('posts', $posts)->with('head_title', 'Manage posts');
 	}
