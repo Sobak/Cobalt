@@ -118,6 +118,11 @@ main {
 	background: #fff;
 }
 
+#logo a {
+	color: inherit;
+	text-decoration: none;
+}
+
 #footer .copyright {
 	text-align: center;
 	color: #868686;

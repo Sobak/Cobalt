@@ -11,7 +11,7 @@
 <body>
 	<div id="header-wrapper">
 		<header id="header">
-			<h1 id="logo">Site title</h1>
+			<h1 id="logo"><a href="{{ URL::action('PostController@getList') }}">Site title</a></h1>
 			<nav id="nav">
 				<ul>
 					<li class="current"><a href="">This is</a></li>
