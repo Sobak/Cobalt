@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	@if(!$posts)
+	@if(!$posts->count())
 		<p>No entries</p>
 	@else
 		@foreach($posts as $post)

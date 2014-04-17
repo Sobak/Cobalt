@@ -5,11 +5,6 @@ class PostController extends BaseController {
 	{
 		$posts = Post::orderBy('created_at', 'desc')->get();
 
-		if (!$posts->count())
-		{
-			$posts = false;
-		}
-
 		return View::make('post.list')->with('posts', $posts)->with('head_title', 'Index');
 	}
 
