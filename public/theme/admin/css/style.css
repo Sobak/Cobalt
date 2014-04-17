@@ -255,6 +255,20 @@ button {
 	margin-right: 3px;
 }
 
+.button-create {
+	font-size: 10px;
+	margin-left: 10px;
+	line-height: 10px;
+	vertical-align: center;
+	position: relative;
+	bottom: 5px;
+	padding: 6px 12px;
+}
+
+.well>h1 {
+	display: inline-block;
+}
+
 [data-badge] {
 	position: relative;
 }

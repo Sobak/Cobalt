@@ -15,7 +15,7 @@
 			<h1 id="logo"><a class="fastbutton" href="/">Cobalt</a></h1>
 			<nav id="primary">
 				<ul>
-					<li><a data-icon="b" href="">Write a post</a></li>
+					<li><a data-icon="b" href="{{ URL::to('admin/post/new') }}">Write a post</a></li>
 					<li><a data-icon="U" href="">Users</a></li>
 					<li><a data-icon="y" href="">Settings</a></li>
 				</ul>
@@ -34,7 +34,7 @@
 		<nav class="submenu" id="secondary">
 			<ul>
 				<li class="active"><a data-icon="S" href="{{ URL::route('admin.dashboard') }}">Dashboard</a></li>
-				<li><a data-icon="p" href="">Posts</a></li>
+				<li><a data-icon="p" href="{{ URL::to('admin/posts') }}">Posts</a></li>
 				<li><a data-icon="l" href="">Pages</a></li>
 			</ul>
 		</nav>
