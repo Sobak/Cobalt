@@ -30,6 +30,9 @@
 			</div>
 		</div>
 	</header>
+	<aside id="notifications">
+		@yield('notifications')
+	</aside>
 	<main id="main">
 		<nav class="submenu" id="secondary">
 			<ul>
