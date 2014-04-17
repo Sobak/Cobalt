@@ -1523,3 +1523,8 @@ strong {
 em {
 	font-style: italic;
 }
+
+.table-empty {
+	text-align: center;
+	font-style: italic;
+}

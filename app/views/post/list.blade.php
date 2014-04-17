@@ -2,7 +2,10 @@
 
 @section('content')
 	@if(!$posts->count())
-		<p>No entries</p>
+		<article>
+			<h2>No posts found</h2>
+			<p>No entries on this page yet, sorry.</p>
+		</article>
 	@else
 		@foreach($posts as $post)
 			<article>

@@ -20,7 +20,9 @@
 			<tbody>
 
 	@if(!$posts->count())
-		<p>No entries</p>
+		<tr>
+			<td colspan="5" class="table-empty">No posts yet, add something!</td>
+		</tr>
 	@else
 		@foreach($posts as $post)
 			<tr>
