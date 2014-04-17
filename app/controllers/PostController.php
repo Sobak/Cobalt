@@ -42,7 +42,7 @@ class PostController extends BaseController {
 			$post->title = Input::get('title');
 			$post->slug = Input::get('slug');
 			$post->content = Input::get('content');
-			$post->user_id = 1; // @todo: only temporary!
+			$post->user_id = Auth::user()->id;
 			$post->save();
 
 			return Redirect::to('admin/post/edit/'.$post->id)->with('message', 'Post has been successfully created.');
