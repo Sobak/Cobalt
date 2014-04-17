@@ -17,14 +17,23 @@ class PostController extends BaseController {
 
 	public function getManage()
 	{
-		$posts = Post::orderBy('created_at', 'desc')->get();
+		$view = [
+			'head_title' => 'Manage posts',
+			'menu_section' => 'posts',
+			'posts' => Post::orderBy('created_at', 'desc')->get()
+		];
 
-		return View::make('post.manage')->with('posts', $posts)->with('head_title', 'Manage posts');
+		return View::make('post.manage', $view);
 	}
 
 	public function getCreate()
 	{
-		return View::make('post.create')->with('head_title', 'Create post');
+		$view = [
+			'head_title' => 'Create post',
+			'menu_section' => 'posts'
+		];
+
+		return View::make('post.create', $view);
 	}
 
 	public function postCreate()
@@ -55,9 +64,13 @@ class PostController extends BaseController {
 
 	public function getEdit($id)
 	{
-		$post = Post::find($id);
+		$view = [
+			'head_title' => 'Manage posts',
+			'menu_section' => 'posts',
+			'post' => Post::find($id)
+		];
 
-		return View::make('post.edit')->with('post', $post)->with('head_title', 'Edit post');
+		return View::make('post.edit', $view);
 	}
 
 	public function postEdit()

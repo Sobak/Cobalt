@@ -6,6 +6,7 @@ class SettingsController extends \BaseController {
 	{
 		$view = [
 			'head_title' => 'Edit configuration',
+			'menu_section' => 'settings',
 			'settings' => \Setting::all()
 		];
 

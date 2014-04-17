@@ -17,7 +17,7 @@
 				<ul>
 					<li><a data-icon="b" href="{{ URL::action('PostController@getCreate') }}">Write a post</a></li>
 					<li><a data-icon="U" href="">Users</a></li>
-					<li><a data-icon="y" href="{{ URL::action('Admin\SettingsController@getIndex') }}">Settings</a></li>
+					<li {{ Helper::adminMenuClass('settings', $menu_section) }}><a data-icon="y" href="{{ URL::action('Admin\SettingsController@getIndex') }}">Settings</a></li>
 				</ul>
 			</nav>
 			<div class="pull-right">
@@ -36,8 +36,8 @@
 	<main id="main">
 		<nav class="submenu" id="secondary">
 			<ul>
-				<li class="active"><a data-icon="S" href="{{ URL::route('admin.dashboard') }}">Dashboard</a></li>
-				<li><a data-icon="p" href="{{ URL::to('admin/posts') }}">Posts</a></li>
+				<li {{ Helper::adminMenuClass('dashboard', $menu_section) }}><a data-icon="S" href="{{ URL::action('Admin\DashboardController@getIndex') }}">Dashboard</a></li>
+				<li {{ Helper::adminMenuClass('posts', $menu_section) }}><a data-icon="p" href="{{ URL::to('admin/posts') }}">Posts</a></li>
 				<li><a data-icon="l" href="">Pages</a></li>
 			</ul>
 		</nav>
