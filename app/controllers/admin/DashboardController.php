@@ -1,9 +1,7 @@
 <?php
 namespace Admin;
-use BaseController;
-use View;
 
-class DashboardController extends BaseController {
+class DashboardController extends \BaseController {
 	public function getIndex()
 	{
 		$view = [
@@ -11,6 +9,6 @@ class DashboardController extends BaseController {
 			'menu_section' => 'dashboard'
 		];
 
-		return View::make('admin.dashboard', $view);
+		return \View::make('admin.dashboard', $view);
 	}
 }
