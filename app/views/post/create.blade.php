@@ -41,3 +41,15 @@
 	</div>
 	{{ Form::close() }}
 @stop
+
+@section('notifications')
+	@if($errors->has())
+		@foreach ($errors->all() as $message)
+			{{ Helper::adminNotification($message, 'error') }}
+		@endforeach
+	@endif
+
+	@if(Session::has('message'))
+		{{ Helper::adminNotification(Session::get('message')) }}
+	@endif
+@stop

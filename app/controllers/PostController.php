@@ -29,14 +29,28 @@ class PostController extends BaseController {
 
 	public function postCreate()
 	{
-		$post = new Post;
-		$post->title = Input::get('title');
-		$post->slug = Input::get('slug');
-		$post->content = Input::get('content');
-		$post->user_id = 1; // @todo: only temporary!
-		$post->save();
+		$rules = [
+			'title' => 'required|max:100',
+			'slug' => 'required|alpha_dash|max:100|unique:posts',
+			'content' => 'required'
+		];
 
-		return Redirect::to('admin/post/edit/'.$post->id);
+		$validator = Validator::make(Input::all(), $rules);
+		if ($validator->passes())
+		{
+			$post = new Post;
+			$post->title = Input::get('title');
+			$post->slug = Input::get('slug');
+			$post->content = Input::get('content');
+			$post->user_id = 1; // @todo: only temporary!
+			$post->save();
+
+			return Redirect::to('admin/post/edit/'.$post->id)->with('message', 'Post has been successfully created.');
+		}
+		else
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 	}
 
 	public function getEdit($id)
@@ -48,15 +62,29 @@ class PostController extends BaseController {
 
 	public function postEdit()
 	{
-		$id = Input::get('id');
+		$rules = [
+			'title' => 'required|max:100',
+			'slug' => 'required|alpha_dash|max:100', // @todo: bug here, have to check uniqueness properly
+			'content' => 'required'
+		];
 
-		$post = Post::find($id);
-		$post->title = Input::get('title');
-		$post->slug = Input::get('slug');
-		$post->content = Input::get('content');
-		$post->save();
+		$validator = Validator::make(Input::all(), $rules);
+		if ($validator->passes())
+		{
+			$id = Input::get('id');
 
-		return Redirect::to("admin/post/edit/$id");
+			$post = Post::find($id);
+			$post->title = Input::get('title');
+			$post->slug = Input::get('slug');
+			$post->content = Input::get('content');
+			$post->save();
+
+			return Redirect::back()->with('message', 'Post has been updated.');
+		}
+		else
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
 	}
 
 	public function getDelete($id)
