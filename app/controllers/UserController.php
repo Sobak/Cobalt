@@ -50,25 +50,19 @@ class UserController extends BaseController {
 
 	public function postRegister()
 	{
-		$credentials = [
-			'username' => Input::get('username'),
-			'email' => Input::get('email'),
-			'password' => Input::get('password'),
-			'password_confirmation' => Input::get('password_confirmation')
-		];
 		$rules = [
 			'username' => 'required|alpha_num|between:3,32|unique:users',
 			'email' => 'required|email|unique:users',
 			'password' => 'required|min:6|confirmed'
 		];
 
-		$validator = Validator::make($credentials, $rules);
+		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->passes())
 		{
 			$user = new User();
-			$user->username = $credentials['username'];
-			$user->email = $credentials['email'];
-			$user->password = Hash::make($credentials['password']);
+			$user->username = Input::get('username');
+			$user->email = Input::get('email');
+			$user->password = Hash::make(Input::get('password'));
 			$user->save();
 
 			return Redirect::back()->with('message', 'Your account has been registered.');
