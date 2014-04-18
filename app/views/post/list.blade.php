@@ -9,7 +9,7 @@
 	@else
 		@foreach($posts as $post)
 			<article>
-				<h2><a href="post/{{ $post->slug }}/">{{{ $post->title }}}</a></h2>
+				<h2><a href="{{ action('PostController@getShow', ['slug' => $post->slug]) }}">{{{ $post->title }}}</a></h2>
 				{{ $post->content }}
 			</article>
 		@endforeach

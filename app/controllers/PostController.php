@@ -54,7 +54,7 @@ class PostController extends BaseController {
 			$post->user_id = Auth::user()->id;
 			$post->save();
 
-			return Redirect::to('admin/post/edit/'.$post->id)->with('message', 'Post has been successfully created.');
+			return Redirect::action('PostController@getEdit', ['id' => $post->id])->with('message', 'Post has been successfully created.');
 		}
 		else
 		{

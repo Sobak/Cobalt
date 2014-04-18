@@ -35,12 +35,12 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::route('user.login');
+	if (Auth::guest()) return Redirect::action('UserController@getLogin');
 });
 
 Route::filter('auth.admin', function()
 {
-	if (Auth::guest()) return Redirect::route('user.login');
+	if (Auth::guest()) return Redirect::action('UserController@getLogin');
 	if (Auth::user()->level != 'admin') return App::abort(403);
 });
 

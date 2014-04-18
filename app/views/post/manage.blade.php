@@ -3,7 +3,7 @@
 @section('content')
 	<div class="well">
 		<h1>Posts</h1>
-		<a href="{{ URL::to('admin/post/new') }}" class="button button-primary button-create">Create new</a>
+		<a href="{{ action('PostController@getCreate') }}" class="button button-primary button-create">Create new</a>
 	</div>
 
 	<div class="table-container">
@@ -31,8 +31,8 @@
 				<td>{{ date('d-m-Y', $post->updated_at->timestamp) }}</td>
 				<td>{{ $post->user->username }}</td>
 				<td>
-					<a class="button button-plain" href="{{ URL::to('admin/post/edit/'.$post->id) }}">Edit</a>
-					<a class="button button-plain" href="{{ URL::to('admin/post/delete/'.$post->id) }}">Delete</a>
+					<a class="button button-plain" href="{{ action('PostController@getEdit', ['id' => $post->id]) }}">Edit</a>
+					<a class="button button-plain" href="{{ action('PostController@getDelete', ['id' => $post->id]) }}">Delete</a>
 				</td>
 			</tr>
 		@endforeach

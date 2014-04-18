@@ -38,7 +38,7 @@
 		<div class="button-well">
 			{{ Form::submit('Save', ['class' => 'button button-primary']) }}
 		</div>
-		<a class="button button-link" data-icon="[" href="{{ URL::to('admin/posts') }}">Manage posts</a>
+		<a class="button button-link" data-icon="[" href="{{ action('PostController@getManage') }}">Manage posts</a>
 	</div>
 	{{ Form::close() }}
 @stop
