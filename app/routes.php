@@ -29,9 +29,9 @@ Route::get('post/{slug}', 'PostController@getShow');
 
 /* User module */
 Route::group(array('prefix' => 'user'), function() {
-	Route::get('login', 'UserController@getLogin');
+	Route::get('login', ['uses' => 'UserController@getLogin', 'before' => 'guest']);
 	Route::post('login', 'UserController@postLogin');
-	Route::get('register', 'UserController@getRegister');
+	Route::get('register', ['uses' => 'UserController@getRegister', 'before' => 'guest']);
 	Route::post('register', 'UserController@postRegister');
 	Route::get('logout', 'UserController@getLogout');
 });
