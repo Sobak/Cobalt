@@ -12,6 +12,11 @@ class PostController extends BaseController {
 	{
 		$post = Post::whereSlug($slug)->first();
 
+		if (!$post)
+		{
+			App::abort(404);
+		}
+
 		return View::make('post.show')->with('post', $post)->with('head_title', $post->title);
 	}
 
@@ -65,9 +70,9 @@ class PostController extends BaseController {
 	public function getEdit($id)
 	{
 		$view = [
-			'head_title' => 'Manage posts',
+			'head_title' => 'Edit post',
 			'menu_section' => 'posts',
-			'post' => Post::find($id)
+			'post' => Post::findOrFail(intval($id))
 		];
 
 		return View::make('post.edit', $view);
@@ -84,9 +89,9 @@ class PostController extends BaseController {
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->passes())
 		{
-			$id = Input::get('id');
+			$id = intval(Input::get('id'));
 
-			$post = Post::find($id);
+			$post = Post::findOrFail($id);
 			$post->title = Input::get('title');
 			$post->slug = Input::get('slug');
 			$post->content = Input::get('content');
@@ -102,7 +107,7 @@ class PostController extends BaseController {
 
 	public function getDelete($id)
 	{
-		Post::destroy($id);
+		Post::destroy(intval($id));
 
 		return Redirect::action('PostController@getManage');
 	}
