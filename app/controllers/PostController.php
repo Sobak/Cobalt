@@ -80,17 +80,19 @@ class PostController extends BaseController {
 
 	public function postEdit()
 	{
+		$id = intval(Input::get('id'));
+
+		// Third parameter in slug uniqueness validation prevents from recognizing current article's slug
+		// as a duplicate
 		$rules = [
 			'title' => 'required|max:100',
-			'slug' => 'required|alpha_dash|max:100', // @todo: bug here, have to check uniqueness properly
+			'slug' => 'required|alpha_dash|max:100|unique:posts,slug,'.$id,
 			'content' => 'required'
 		];
 
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->passes())
 		{
-			$id = intval(Input::get('id'));
-
 			$post = Post::findOrFail($id);
 			$post->title = Input::get('title');
 			$post->slug = Input::get('slug');
