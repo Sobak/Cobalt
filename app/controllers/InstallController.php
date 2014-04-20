@@ -36,6 +36,7 @@ class InstallController extends BaseController {
 			$table->string('password', 60);
 			$table->string('email')->unique();
 			$table->enum('level', array('user', 'admin'))->default('user');
+			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});
 
